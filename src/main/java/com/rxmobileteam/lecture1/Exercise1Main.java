@@ -46,5 +46,9 @@ public class Exercise1Main {
         productService.addProduct(iPhone12Pro);
         productService.addProduct(samsungGalaxyS21);
         productService.addProduct(samsungGalaxyS21Ultra);
+
+        for (Product product: productService.searchProducts("flagship")) {
+            System.out.println(product.getName());
+        }
     }
 }
