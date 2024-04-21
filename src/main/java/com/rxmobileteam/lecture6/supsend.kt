@@ -1,10 +1,7 @@
 package com.rxmobileteam.lecture6
 
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.runBlocking
 import java.util.*
+import kotlinx.coroutines.*
 
 @JvmInline
 value class UserId(val id: Int)
@@ -77,22 +74,39 @@ internal class RealUserRepository(
 ) : UserRepository {
   override suspend fun findUserById(id: UserId): User? {
     // Call userApi's methods on ioDispatcher
-    TODO("Not yet implemented")
+    return withContext(ioDispatcher) {
+      userApi.findUserById(id)
+    }
   }
 
   override suspend fun getPostsByUserId(id: UserId): List<Post> {
     // Call userApi's methods on ioDispatcher
-    TODO("Not yet implemented")
+    return withContext(ioDispatcher) {
+      val user = findUserById(id) ?: return@withContext emptyList()
+      userApi.getPostsByUser(user)
+    }
   }
 
   override suspend fun findUserAndPostsById(id: UserId): UserAndPosts? {
     // Call userApi's methods on ioDispatcher
-    TODO("Not yet implemented")
+    return withContext(ioDispatcher) {
+      val userDeferred = async { findUserById(id) }
+      val postDeferred = async { getPostsByUserId(id) }
+      val user = userDeferred.await() ?: return@withContext null
+      val posts = postDeferred.await()
+      UserAndPosts(user, posts)
+    }
   }
 
   override suspend fun findUserAndUserDetailsById(id: UserId): UserAndDetails? {
     // Call concurrently userApi's methods on ioDispatcher
-    TODO("Not yet implemented")
+    return withContext(ioDispatcher) {
+      val userDeferred = async { findUserById(id) }
+      val detailsDeferred = async { userApi.findDetailsByUser(id) }
+      val user = userDeferred.await() ?: return@withContext null
+      val details = detailsDeferred.await() ?: return@withContext null
+      UserAndDetails(user, details)
+    }
   }
 }
 
