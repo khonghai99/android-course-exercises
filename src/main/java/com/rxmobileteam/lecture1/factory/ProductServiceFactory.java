@@ -1,6 +1,5 @@
 package com.rxmobileteam.lecture1.factory;
 
-import com.rxmobileteam.lecture1.data.ProductDao;
 import com.rxmobileteam.lecture1.service.ProductService;
 import com.rxmobileteam.utils.ExerciseNotCompletedException;
 
@@ -17,7 +16,7 @@ public class ProductServiceFactory {
      * @return ProductService
      */
     public ProductService createProductService() {
-        ProductDao productDao = new ProductDao();
-        return new ProductService(productDao);
+        // TODO: implement this method
+        throw new ExerciseNotCompletedException();
     }
 }
