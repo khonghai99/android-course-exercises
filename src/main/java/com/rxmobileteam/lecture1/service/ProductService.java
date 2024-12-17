@@ -4,6 +4,7 @@ import com.rxmobileteam.lecture1.data.ProductDao;
 import com.rxmobileteam.utils.ExerciseNotCompletedException;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,6 +14,11 @@ import java.util.List;
  * TODO: 2. Using {@link ProductDao} implement method {@link ProductService#searchProducts(String)}
  */
 public class ProductService {
+    private final ProductDao productDao;
+
+    public ProductService(ProductDao productDao) {
+        this.productDao = productDao;
+    }
 
     /**
      * Adds a new product to the system.
@@ -21,8 +27,7 @@ public class ProductService {
      * @return {@code true} if a product was added, {@code false} otherwise.
      */
     public boolean addProduct(@NotNull Product product) {
-        // TODO: implement this method
-        throw new ExerciseNotCompletedException();
+        return productDao.add(product);
     }
 
     /**
@@ -32,7 +37,17 @@ public class ProductService {
      * @return a list of found products
      */
     public List<Product> searchProducts(String query) {
-        // TODO: implement this method
-        throw new ExerciseNotCompletedException();
+        List<Product> foundProducts = new ArrayList<>();
+        String lowercaseQuery = query.toLowerCase(); // Convert query to lowercase once
+
+        for (Product product : productDao.findAll()) {
+            String lowercaseName = product.getName().toLowerCase(); // Convert product name to lowercase
+            String lowercaseDescription = product.getDescription().toLowerCase(); // Convert product description to lowercase
+
+            if (lowercaseName.contains(lowercaseQuery) || lowercaseDescription.contains(lowercaseQuery)) {
+                foundProducts.add(product);
+            }
+        }
+        return foundProducts;
     }
 }
