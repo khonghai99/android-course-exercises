@@ -14,14 +14,14 @@ object StringOperationDelegates {
   fun uppercase(initial: String, locale: Locale = Locale.ROOT): ReadWriteProperty<Any?, String> =
     object : ReadWriteProperty<Any?, String> {
       // TODO: Implement the delegate
-      private var uppercaseValue: String = initial.uppercase(locale)
+      private var uppercaseValue: String = TODO()
 
       // TODO: Implement the getValue
-      override fun getValue(thisRef: Any?, property: KProperty<*>): String = uppercaseValue
+      override fun getValue(thisRef: Any?, property: KProperty<*>): String = TODO()
 
       // TODO: Implement the setValue
       override fun setValue(thisRef: Any?, property: KProperty<*>, value: String) {
-        uppercaseValue = value.uppercase(locale)
+        TODO()
       }
     }
 
@@ -30,14 +30,14 @@ object StringOperationDelegates {
    */
   fun trimmed(initial: String): ReadWriteProperty<Any?, String> = object : ReadWriteProperty<Any?, String> {
     // TODO: Implement the delegate
-    private var trimmedValue: String = initial.trim()
+    private var trimmedValue: String = TODO()
 
     // TODO: Implement the getValue
-    override fun getValue(thisRef: Any?, property: KProperty<*>): String = trimmedValue
+    override fun getValue(thisRef: Any?, property: KProperty<*>): String = TODO()
 
     // TODO: Implement the setValue
     override fun setValue(thisRef: Any?, property: KProperty<*>, value: String) {
-      trimmedValue = value.trim()
+      TODO()
     }
   }
 }

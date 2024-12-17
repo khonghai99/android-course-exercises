@@ -11,14 +11,6 @@ public class Product {
     private final String description;
     private final double price;
 
-    public @NotNull String getName() {
-        return name;
-    }
-
-    public @NotNull String getDescription() {
-        return description;
-    }
-
     public Product(
         @NotNull String id,
         @NotNull String name,

@@ -24,7 +24,8 @@ public class ProductDao {
      * @return {@code true} if a product was stored, {@code false} otherwise
      */
     public boolean add(@NotNull Product product) {
-        return products.add(product);
+        // TODO: implement this method
+        throw new ExerciseNotCompletedException();
     }
 
     /**
@@ -33,7 +34,8 @@ public class ProductDao {
      * @return a set of all stored products
      */
     public Set<Product> findAll() {
-        return products;
+        // TODO: implement this method
+        throw new ExerciseNotCompletedException();
     }
 
 }

@@ -25,35 +25,35 @@ data class Order(
 )
 
 // TODO: Return a list of Product, sorted in the ascending by price. if prices are equal, sorted by favoriteCount descending
-fun List<Product>.sortedByPriceAscendingThenByFavoriteCountDescending(): List<Product> = productList.sortedBy { it.price }.sortedByDescending { it.favoriteCount }
+fun List<Product>.sortedByPriceAscendingThenByFavoriteCountDescending(): List<Product> = TODO()
 
 // TODO: Return a set of Products in the orders (The order doesn't matter).
-fun List<Order>.getProductsSet(): Set<Product> = orderList.flatMap { it.products }.toSet()
+fun List<Order>.getProductsSet(): Set<Product> = TODO()
 
 // TODO: Return a list of Products in the orders, duplicates are allowed.
-fun List<Order>.getProductsList(): List<Product> = orderList.flatMap { it.products }
+fun List<Order>.getProductsList(): List<Product> = TODO()
 
 // TODO: Return a list of delivered orders
-fun List<Order>.getDeliveredOrders(): List<Order> = orderList.filter { it.isDelivered }
+fun List<Order>.getDeliveredOrders(): List<Order> = TODO()
 
 // TODO: Return a list of products in the delivered orders
-fun List<Order>.getDeliveredProductsList(): List<Product> = orderList.filter { it.isDelivered }.flatMap { it.products }
+fun List<Order>.getDeliveredProductsList(): List<Product> = TODO()
 
 // TODO: Partition the orders into two lists: "delivered" and "not delivered"
-fun List<Order>.partitionDeliveredAndNotDelivered(): Pair<List<Order>, List<Order>> = orderList.getDeliveredOrders() to orderList.filter { !it.isDelivered }
+fun List<Order>.partitionDeliveredAndNotDelivered(): Pair<List<Order>, List<Order>> = TODO()
 
 // TODO: Return a map of product to count of this product in the orders
 // eg. [Product1 -> 2, Product2 -> 1, Product3 -> 3]
-fun List<Order>.countOfEachProduct(): Map<Product, Int> = getProductsList().groupBy { it }.mapValues { it.value.size }
+fun List<Order>.countOfEachProduct(): Map<Product, Int> = TODO()
 
 // TODO: Return the sum of product prices in the order
-fun Order.sumProductPrice(): Double = orderList.getProductsList().sumOf { it.price }
+fun Order.sumProductPrice(): Double = TODO()
 
 // TODO: Return the product with the maximum price in the order
-fun Order.getMaxPriceProduct(): Product = orderList.getProductsList().maxBy { it.price }
+fun Order.getMaxPriceProduct(): Product = TODO()
 
 // TODO: Return the product with the min price in the order
-fun Order.getMinPriceProduct(): Product = orderList.getProductsList().minBy { it.price }
+fun Order.getMinPriceProduct(): Product = TODO()
 
 val product = Product(
   id = UUID.randomUUID().toString(),
